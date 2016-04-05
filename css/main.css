@@ -1,0 +1,53 @@
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	1). universal
+	2). navbar
+	3). posts
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* ------ universal ------- */
+
+	html{
+		font:16px;
+	}
+
+	ul {
+		padding-left: 0;
+	}
+
+	li {
+		list-style: none;
+	}
+
+	.ng-cloak {
+		display: none;
+	}
+	
+	.centered {
+		text-align: center;
+	}
+
+	.strikethrough {
+	  text-decoration: line-through;
+	}
+
+/* ------ to-do ------- */
+
+	.actions {
+		text-align: center;
+	}
+	.actions li {
+		display: inline-block;
+	}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="To-Do">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular To-Do</title>
+	<link rel="stylesheet" href="css/skeleton.css">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body ng-controller="todo">
+	
+	<div class="container">
+		<div class="row">
+			<div class="twelve columns">
+				<ul class="actions">
+					<li><button ng-click="displayNewToDo ? displayNewToDo = false : displayNewToDo = true; displayToDoList = false; displayCompletedList = false">New</button></li>
+					<li><button ng-click="displayToDoList ? displayToDoList = false : displayToDoList = true; displayNewToDo = false; displayCompletedList = false">To Do List</button></li>
+					<li><button ng-click="displayCompletedList ? displayCompletedList = false : displayCompletedList = true; displayToDoList = false; displayNewToDo = false">Completed</button></li>
+				</ul>
+			</div>
+		</div>
+
+		<hr>
+
+		<div ng-hide="displayNewToDo || displayToDoList || displayCompletedList">
+			<h4 class="centered">Click any button to start or edit your to-do list.</h4>
+		</div>
+
+		<form ng-show="displayNewToDo" ng-submit="addItem(item)">
+			<div class="row">
+				<div class="twelve columns">
+					<label for="exampleEmailInput">To Do:</label>
+					<input class="u-full-width" type="text" ng-model="item" placeholder="What do I need to do today?" id="exampleEmailInput">
+				</div>
+			</div>
+			<input class="button" type="submit" value="Submit">
+		</form>
+
+		<div class="row" ng-show="displayToDoList">
+			<div ng-show="toDoList.length <= 0">
+				<h4 class="centered">Click the 'new' button to add items to your to-do list.</h4>
+			</div>
+			<div class="twelve">
+				<label class="" ng-repeat="item in toDoList">
+				  <input type="checkbox" ng-click="removeItem(item)">
+				  <span class="label-body">{{ item }}</span> <br>
+				</label>
+			</div>
+		</div>
+
+		<div class="row" ng-show="displayCompletedList">
+			<div ng-show="toDoList.length <= 0 && completedList.length <= 0">
+				<h4 class="centered">Click the 'new' button to add items to your to-do list.</h4>
+			</div>
+			<div ng-show="toDoList.length > 0 && completedList.length <= 0">
+				<h4 class="centered">Select an item from your to-do list to mark it as complete.</h4>
+			</div>
+			<div class="twelve">
+				<label class="" ng-repeat="item in completedList">
+				  <input type="checkbox" ng-click="incomplete(item)">
+				  <span class="label-body strikethrough">{{ item }}</span> <br>
+				</label>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script type="text/javascript" src="javascript/app.js"></script>
+</body>
+</html>
